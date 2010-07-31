@@ -2,7 +2,11 @@ require 'rubygems'
 gem 'thrift', '< 0.2.5'
 require 'thrift'
 require 'thrift_client'
-require 'json' unless defined?(JSON)
+begin
+  require 'yajl/json_gem'
+rescue LoadError
+  require 'json' unless defined?(JSON)
+end
 require 'simple_uuid'
 
 here = File.expand_path(File.dirname(__FILE__))
